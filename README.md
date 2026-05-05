@@ -4,6 +4,17 @@ Finexa is a comprehensive, modern digital banking system built with Laravel and 
 
 It is designed with a sleek, glassmorphism-inspired dark UI to offer a premium, native app-like experience on the web.
 
+## 📸 Screenshots
+
+### Public Landing Page
+![Landing Page](docs/landing-page.png)
+
+### Customer Dashboard
+![User Dashboard](docs/customer-dashboard.png)
+
+### Admin Panel
+![Admin Dashboard](docs/admin-dashboard.png)
+
 ## 🚀 Key Features
 
 ### 1. Account Management
@@ -47,8 +58,8 @@ It is designed with a sleek, glassmorphism-inspired dark UI to offer a premium, 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/imFARSI/Finexa.git
-   cd Finexa
+   git clone https://github.com/imFARSI/digital-banking-system.git
+   cd digital-banking-system
    ```
 
 2. **Install dependencies:**
