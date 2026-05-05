@@ -1,5 +1,6 @@
 <?php $__env->startSection('title', 'Register'); ?>
 
+
 <?php $__env->startSection('content'); ?>
 <div class="auth-card register-card">
     <div class="brand-header mb-3">
@@ -17,6 +18,7 @@
         </div>
     <?php endif; ?>
 
+    
     <form method="POST" action="<?php echo e(route('register')); ?>" novalidate>
         <?php echo csrf_field(); ?>
         <div class="row g-3">
@@ -55,6 +57,7 @@
                 </select>
             </div>
 
+            
             <div class="col-md-6">
                 <label class="form-label">Password <span class="text-danger">*</span></label>
                 <div class="input-group">

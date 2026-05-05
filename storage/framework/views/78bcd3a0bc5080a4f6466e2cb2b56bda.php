@@ -1,5 +1,6 @@
 <?php $__env->startSection('title', 'Login'); ?>
 
+
 <?php $__env->startSection('content'); ?>
 <div class="auth-card">
     <div class="brand-header">
@@ -7,6 +8,7 @@
         <div class="brand-tagline">Welcome back to Secure Digital Banking</div>
     </div>
 
+    
     <?php if($errors->any()): ?>
         <div class="alert alert-danger" style="background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.3); color: #ff6b6b; border-radius: 10px;">
             <ul class="mb-0 ps-3 small">
@@ -17,6 +19,7 @@
         </div>
     <?php endif; ?>
 
+    
     <form method="POST" action="<?php echo e(route('login')); ?>">
         <?php echo csrf_field(); ?>
         <div class="mb-3">
