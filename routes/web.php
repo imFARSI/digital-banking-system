@@ -11,8 +11,6 @@ use App\Http\Controllers\RewardController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\AdminUserController;
 
-use App\Http\Controllers\AdminUserController;
-
 // ----------------------------------------------------------------------
 // Public Routes
 // ----------------------------------------------------------------------
@@ -28,8 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/notifications/{id}/read', [\App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.read');
     Route::post('/notifications/read-all', [\App\Http\Controllers\NotificationController::class, 'markAllAsRead'])->name('notifications.read.all');
-});
-
 });
 
 // ----------------------------------------------------------------------
@@ -77,8 +73,6 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::post('/support',            [SupportController::class, 'store'])->name('support.store');
     Route::get('/support/{id}',        [SupportController::class, 'show'])->name('support.show');
     Route::post('/support/{id}/reply', [SupportController::class, 'reply'])->name('support.reply');
-});
-
 });
 
 // ----------------------------------------------------------------------
