@@ -1,167 +1,102 @@
-# Finexa — Digital Banking System
+# Finexa - Secure Digital Banking Platform
 
-A full-stack Laravel 12 + MySQL banking system following strict MVC architecture.
+Finexa is a comprehensive, modern digital banking system built with Laravel and Bootstrap. It provides a complete suite of financial services, including secure money transfers, savings accounts, loan processing, card management, bill payments, and a rewarding points system. 
 
-## Project Folder Order (For Demo)
+It is designed with a sleek, glassmorphism-inspired dark UI to offer a premium, native app-like experience on the web.
 
-Use this order when presenting the project structure.
+## 📸 Screenshots
 
-### 1) Run-Critical Dependencies and Configuration (Top)
+### Public Landing Page
+![Landing Page](docs/landing-page.png)
 
-```
-vendor/                # Laravel framework and Composer packages
-bootstrap/             # Laravel bootstrapping
-config/                # App/database/session/mail configuration
-.env                   # Environment values (DB, app key, etc.)
-routes/                # Route definitions (web/console)
-public/                # Web entry point and public assets
-storage/               # Runtime cache/log/session folders
-Database/              # SQL schema backup/import file
-artisan                # Laravel CLI entry point
-composer.json          # Dependency manifest
-composer.lock          # Locked dependency versions
-```
+### Customer Dashboard
+![User Dashboard](docs/customer-dashboard.png)
 
-### 2) MVC Application Layer (Bottom)
+### Admin Panel
+![Admin Dashboard](docs/admin-dashboard.png)
 
-```
-Controllers/           # Controllers
-Models/                # Models
-resources/views/       # Views (Blade templates)
-Notifications/         # App notification classes used by controllers/models
-app/Http/Middleware/   # Access and role middleware
-```
+## 🚀 Key Features
 
-Note: Laravel requires these folders to stay in their expected paths. This section is a presentation order, not a folder relocation.
+### 1. Account Management
+* **Multi-Account Support**: Users can hold multiple accounts (Savings, Current).
+* **Secure Login/Registration**: Protected by Laravel's built-in authentication and encryption.
+* **Profile Management**: Update personal details and secure credentials easily.
 
-## 🔧 Tech Stack
+### 2. Core Banking Operations
+* **Instant Transfers**: Send funds to any Finexa account securely with real-time balance checks.
+* **Deposits & Withdrawals**: Easily add funds to or withdraw from your digital wallet.
+* **Transaction History**: Comprehensive, paginated history of all financial activities (credits, debits).
 
-| Layer | Technology |
-|---|---|
-| Backend | PHP 8.2 / Laravel 12 |
-| Database | MySQL (InnoDB, ACID-compliant) |
-| Frontend | Bootstrap 5 (CDN) + Blade Templates |
-| Auth | Laravel Session Auth + Hardcoded Admin |
-| Server | XAMPP (php artisan serve) |
+### 3. Advanced Financial Services
+* **Card Management**: Request virtual Credit/Debit cards. Instantly freeze or unfreeze cards for security.
+* **Savings Plans (DPS/FDR)**: Open fixed deposits (7.5%) or recurring deposit schemes (6.0%) and track maturity.
+* **Loan Approvals**: Apply for personal or business loans. Admins review and disburse funds. Track outstanding balances and make monthly repayments.
 
----
+### 4. Utility & Rewards
+* **Bill Payments**: Pay utility bills from your linked cards or accounts.
+* **Mobile Recharge**: Top-up mobile numbers instantly.
+* **Reward Points System**: Earn points on transactions. Redeem points across multiple tiers for account cashback.
 
-## 🏗️ Architecture (Strict MVC)
+### 5. Customer Support
+* **Ticketing System**: Submit support requests directly from the dashboard.
+* **Admin Replies**: Real-time thread-based communication between customers and support agents.
 
-```
-app/
-├── Http/
-│   ├── Controllers/      ← 7 feature controllers + base
-│   │   ├── Controller.php
-│   │   ├── AuthController.php
-│   │   ├── DashboardController.php
-│   │   ├── AccountController.php
-│   │   ├── TransactionController.php
-│   │   ├── ServiceController.php
-│   │   ├── RewardController.php
-│   │   └── SupportController.php
-│   └── Middleware/
-│       └── AdminMiddleware.php
-├── Models/               ← 17 Eloquent models
-│   └── User, Account, Transaction, Card, Loan, LoanProduct,
-│       LoanRepayment, SavingsPlan, Payment, BillCategory,
-│       Reward, RewardTier, RewardTransaction,
-│       SupportTicket, TicketReply, Notification, UserAddress
-database/
-└── finexa_schema.sql     ← 18-table MySQL schema
-resources/views/          ← Blade views only (no logic)
-routes/web.php            ← All route definitions
-```
+### 6. Admin Panel
+* **User Management**: Admins can suspend or activate users, or create accounts manually.
+* **Global Monitoring**: View all system-wide transactions, approve/reject loans, and manage account closure requests.
+* **System Metrics**: Dashboard KPIs displaying total liquidity, active loans, and transaction volumes.
 
----
+## 💻 Tech Stack
 
-## 🚀 Local Setup
+* **Backend**: PHP 8.x, Laravel Framework
+* **Database**: MySQL
+* **Frontend**: Bootstrap 5, Vanilla CSS (Glassmorphism & Dark Mode)
+* **Icons**: Bootstrap Icons
+* **Fonts**: Google Fonts (Inter)
 
-### Prerequisites
-- XAMPP running (MySQL on port 3306)
-- PHP 8.2+ at `C:\xampp\php\`
+## 🛠️ Installation (Local Development)
 
-### 1. Import Database
-```bash
-# In XAMPP MySQL console or phpMyAdmin
-CREATE DATABASE finexa_db_new;
-# Then import: database/finexa_schema.sql
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/imFARSI/digital-banking-system.git
+   cd digital-banking-system
+   ```
 
-### 2. Configure Environment
-```bash
-# .env is pre-configured for local XAMPP
-# Verify these lines in .env:
-DB_HOST=127.0.0.1
-DB_DATABASE=finexa_db_new
-DB_USERNAME=root
-DB_PASSWORD=
-```
+2. **Install dependencies:**
+   ```bash
+   composer install
+   ```
 
-### 3. Start the Server
-```bash
-C:\xampp\php\php.exe artisan serve --port=8000
-```
+3. **Configure Environment:**
+   Copy `.env.example` to `.env` (or create one) and set up your local database credentials:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=finexa_db
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-### 4. Open Browser
-```
-http://127.0.0.1:8000
-```
+4. **Generate Application Key:**
+   ```bash
+   php artisan key:generate
+   ```
 
----
+5. **Run Migrations & Seeders:**
+   ```bash
+   php artisan migrate --seed
+   ```
+   *(Note: Ensure your database server is running before executing)*
 
-## 🔐 Login Credentials
+6. **Serve the Application:**
+   ```bash
+   php artisan serve
+   ```
+   Access the app at `http://127.0.0.1:8000`
 
-| Role | Username | Password |
-|---|---|---|
-| Admin | `admin` | `admin123` |
-| Customer | Register at `/register` | (your password) |
+## 🔒 Security
+Finexa implements strict validation on all transaction forms, server-side balance checking, password hashing, and CSRF protection on all mutating actions to ensure a safe digital environment.
 
----
-
-## ✅ Features (20 Core Banking Features)
-
-### Customer Portal
-| Feature | Route |
-|---|---|
-| Register / Login / Logout | `/register`, `/login` |
-| Dashboard with stats | `/dashboard` |
-| View & Open Accounts | `/accounts` |
-| Account Details + Deposit | `/accounts/{id}` |
-| Close Account Request | POST `/accounts/{id}/close-request` |
-| Update Profile & Password | `/profile` |
-| Transfer Money (ACID) | POST `/transactions/transfer` |
-| Deposit Money | POST `/transactions/deposit` |
-| Withdraw Money | POST `/transactions/withdraw` |
-| Transaction History | `/transactions` |
-| Request Debit/Credit Card | POST `/services/cards/request` |
-| Freeze / Unfreeze Card | POST `/services/cards/{id}/freeze` |
-| Apply for Loan | POST `/services/loans/apply` |
-| Track Loan Status | `/services` → Loans tab |
-| Open DPS / FDR | POST `/services/savings` |
-| Pay Utility Bill | POST `/services/payments/bill` |
-| Mobile Recharge | POST `/services/payments/recharge` |
-| Earn Reward Points (Auto) | Triggered on transfer/deposit |
-| Redeem Points | POST `/rewards/redeem` |
-| Create Support Ticket | POST `/support` |
-| Reply to Ticket | POST `/support/{id}/reply` |
-
-### Admin Portal (`/admin/*`)
-| Feature | Route |
-|---|---|
-| System Dashboard | `/admin/dashboard` |
-| Approve/Reject Loans | `/admin/loans` |
-| View All Tickets | `/admin/support` |
-
----
-
-## 📐 MVC Rules Followed
-
-- ✅ Controllers handle HTTP logic only — no HTML
-- ✅ Models contain all business logic, relationships, helpers
-- ✅ Views contain only Blade rendering — no PHP business logic
-- ✅ Routes protected by `auth` and `admin` middleware
-- ✅ ACID-compliant transactions via `DB::transaction()`
-- ✅ Validation in every controller method
-- ✅ Flash messages for success/error feedback
-- ✅ Maximum 7 feature controllers maintained
+## 📄 License
+This project is open-sourced under the MIT license.
