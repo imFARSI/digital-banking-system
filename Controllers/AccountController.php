@@ -135,7 +135,9 @@ class AccountController extends Controller
         }
 
         $accountNumber = $account->account_number;
-        $account->delete();
+        $account->status = 'closed';
+        $account->closed_at = now();
+        $account->save();
 
         return back()->with('success', 'Account #' . $accountNumber . ' has been permanently closed.');
     }
